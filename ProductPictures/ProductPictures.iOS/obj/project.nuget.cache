@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "e1r0OuCjnlYo6T4C/R/e0cVIkFkveDK8GM17gArodEtrBCYdOPW+joRA+52TAVHcRWMuv9C28XFmY1zB4m9r1g==",
+  "dgSpecHash": "T2emQaQ09vXZEpJ4SaoX2DulY9OJfDKLBjny5lqivwKZ6bHiBUVLyuhYZRGaX0a043UgjGWM0+G7UearG1/akg==",
   "success": true,
   "projectFilePath": "F:\\_Projects\\SmallProjectXamarin\\ProductPictures\\ProductPictures\\ProductPictures.iOS\\ProductPictures.iOS.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\system.componentmodel\\4.3.0\\system.componentmodel.4.3.0.nupkg.sha512",
     "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
-    "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512"
+    "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512",
+    "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\xamarin.forms.pancakeview\\2.3.0.763-beta\\xamarin.forms.pancakeview.2.3.0.763-beta.nupkg.sha512"
   ],
   "logs": []
 }

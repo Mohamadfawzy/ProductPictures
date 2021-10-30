@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "gUO0XxOywrLVSw4P6Lx8CubV+Co7K/m/7rfYAkQ2IKL+mCA8zlb76DEjD10Ke5+T5Tn9tQpcwAWueJ6J8iJ3Eg==",
+  "dgSpecHash": "2ggcJ3i+9sJLwJIZiD1hGu/zd6BTeojg5ol26ostrzb20Ga7+zDtjQBVTA4Rjn+7FeLCCboTj2HSNb3mPvomXA==",
   "success": true,
   "projectFilePath": "F:\\_Projects\\SmallProjectXamarin\\ProductPictures\\ProductPictures\\ProductPictures.Android\\ProductPictures.Android.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\system.componentmodel\\4.3.0\\system.componentmodel.4.3.0.nupkg.sha512",
     "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\xamarin.androidx.activity\\1.2.4.1\\xamarin.androidx.activity.1.2.4.1.nupkg.sha512",
     "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\xamarin.androidx.annotation\\1.2.0.1\\xamarin.androidx.annotation.1.2.0.1.nupkg.sha512",
@@ -60,6 +61,7 @@
     "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\xamarin.androidx.viewpager2\\1.0.0.10\\xamarin.androidx.viewpager2.1.0.0.10.nupkg.sha512",
     "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
     "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512",
+    "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\xamarin.forms.pancakeview\\2.3.0.763-beta\\xamarin.forms.pancakeview.2.3.0.763-beta.nupkg.sha512",
     "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\xamarin.google.android.material\\1.4.0.2\\xamarin.google.android.material.1.4.0.2.nupkg.sha512",
     "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\xamarin.google.guava.listenablefuture\\1.0.0.2\\xamarin.google.guava.listenablefuture.1.0.0.2.nupkg.sha512"
   ],
