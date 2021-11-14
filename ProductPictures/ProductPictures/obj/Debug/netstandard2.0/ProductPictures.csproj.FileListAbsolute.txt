@@ -1,0 +1,17 @@
+F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\bin\Debug\netstandard2.0\ProductPictures.deps.json
+F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\bin\Debug\netstandard2.0\ProductPictures.dll
+F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\bin\Debug\netstandard2.0\ref\ProductPictures.dll
+F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\bin\Debug\netstandard2.0\ProductPictures.pdb
+F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\obj\Debug\netstandard2.0\ProductPictures.csproj.AssemblyReference.cache
+F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\obj\Debug\netstandard2.0\App.xaml.g.cs
+F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\obj\Debug\netstandard2.0\ProductPictures.AssemblyInfoInputs.cache
+F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\obj\Debug\netstandard2.0\ProductPictures.AssemblyInfo.cs
+F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\obj\Debug\netstandard2.0\ProductPictures.csproj.CoreCompileInputs.cache
+F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\obj\Debug\netstandard2.0\XamlC.stamp
+F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\obj\Debug\netstandard2.0\ProductPictures.dll
+F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\obj\Debug\netstandard2.0\ref\ProductPictures.dll
+F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\obj\Debug\netstandard2.0\ProductPictures.pdb
+F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\obj\Debug\netstandard2.0\Layouts\TabBar.xaml.g.cs
+F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\obj\Debug\netstandard2.0\Views\UserPage.xaml.g.cs
+F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\obj\Debug\netstandard2.0\Views\ProductDetailsPage.xaml.g.cs

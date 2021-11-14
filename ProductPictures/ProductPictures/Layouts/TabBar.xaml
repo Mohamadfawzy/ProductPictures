@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductPictures.Layouts.TabBar"
+             Orientation="Horizontal"
+             HorizontalOptions="FillAndExpand"
+             BackgroundColor="Gray"
+             IsVisible="true"
+             HeightRequest="50"
+             VerticalOptions="EndAndExpand"
+             Spacing="0">
+
+    <StackLayout.Resources>
+        <ResourceDictionary>
+            <Style TargetType="BoxView">
+                <Setter Property="Color"
+                        Value="Red" />
+                <Setter Property="HorizontalOptions"
+                        Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="HeightRequest"
+                        Value="30" />
+                <Setter Property="WidthRequest"
+                        Value="30" />
+            </Style>
+            <Style TargetType="StackLayout">
+                <Setter Property="HorizontalOptions"
+                        Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="HeightRequest"
+                        Value="30" />
+                <Setter Property="WidthRequest"
+                        Value="30" />
+            </Style>
+        </ResourceDictionary>
+        
+    </StackLayout.Resources>
+    <BoxView Color="Green" />
+    <BoxView Color="Red" />
+    <BoxView Color="Orange" />
+    <StackLayout BackgroundColor="Black" />
+    <BoxView Color="Brown" />
+    <StackLayout.GestureRecognizers>
+        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+    </StackLayout.GestureRecognizers>
+</StackLayout>

@@ -1,0 +1,572 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:border="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:vm="clr-namespace:ProductPictures.ViewModels"
+             xmlns:behaviors="clr-namespace:ProductPictures.Behavior"
+             x:Class="ProductPictures.Views.ProductDetailsPage"
+             xmlns:icon="clr-namespace:AwesomeFonts"
+             x:Name="this"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- COLORS -->
+            <Color x:Key="WhiteColor">#FFFFFF</Color>
+            <Color x:Key="BlackColor">#000000</Color>
+
+            <Style TargetType="BoxView"
+                   x:Key="boxColorProduct">
+                <Setter Property="HeightRequest"
+                        Value="60" />
+                <Setter Property="WidthRequest"
+                        Value="60" />
+                <Setter Property="HorizontalOptions"
+                        Value="Start" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="CornerRadius"
+                        Value="10" />
+            </Style>
+            <Style TargetType="BoxView"
+                   x:Key="separateLine">
+                <Setter Property="VerticalOptions"
+                        Value="Start" />
+                <Setter Property="HeightRequest"
+                        Value="1" />
+                <Setter Property="Color"
+                        Value="LightGray" />
+                <Setter Property="BackgroundColor"
+                        Value="White" />
+            </Style>
+            <Style TargetType="Label"
+                   x:Key="stars">
+                <Setter Property="Text"
+                        Value="{x:Static icon:IconFont.Star}" />
+                <Setter Property="FontFamily"
+                        Value="IconFont" />
+                <Setter Property="FontSize"
+                        Value="18" />
+                <Setter Property="TextColor"
+                        Value="Gold" />
+
+            </Style>
+            <Style TargetType="Label"
+                   x:Key="LableTabSectionStyle">
+                <Setter Property="FontSize"
+                        Value="18" />
+                <Setter Property="TextColor"
+                        Value="Black" />
+                <Setter Property="Padding"
+                        Value="8,10,8,10" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <vm:ProductDetailsPageVM />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid x:Name="parentGrid"
+              RowDefinitions="60,*,60"
+              RowSpacing="0">
+
+            <!-- HEADER ...................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................... -->
+            <StackLayout x:Name="header"
+                         HeightRequest="60"
+                         BackgroundColor="Black"
+                         Padding="10,0"
+                         Orientation="Horizontal"
+                         Spacing="15"
+                         HorizontalOptions="FillAndExpand">
+                <Label Text="{x:Static icon:IconFont.ArrowLeft }"
+                       FontFamily="IconFont"
+                       FontSize="28"
+                       AnchorX="0"
+                       ScaleX="1.1"
+                       TextColor="White"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="Center" />
+                <border:PancakeView VerticalOptions="Center"
+                                    BackgroundColor="White"
+                                    CornerRadius="20"
+                                    Padding="15,5,20,5"
+                                    HorizontalOptions="StartAndExpand">
+                    <StackLayout Orientation="Horizontal"
+                                 Spacing="2">
+                        <Label Text="{x:Static icon:IconFont.Magnify}"
+                               FontFamily="IconFont"
+                               FontSize="20"
+                               TextColor="Gray"
+                               VerticalOptions="Center" />
+                        <Label Text="Product Search"
+                               FontSize="15"
+                               TextColor="Gray"
+                               VerticalOptions="Center" />
+                    </StackLayout>
+                </border:PancakeView>
+                <Label Text="{x:Static icon:IconFont.Cart}"
+                       FontFamily="IconFont"
+                       FontSize="30"
+                       TextColor="White"
+                       VerticalOptions="Center"
+                       HorizontalOptions="StartAndExpand" />
+                <Label Text="{x:Static icon:IconFont.Share}"
+                       FontFamily="IconFont"
+                       FontSize="30"
+                       TextColor="White"
+                       VerticalOptions="Center"
+                       HorizontalOptions="StartAndExpand" />
+                <Label Text="{x:Static icon:IconFont.DotsVertical}"
+                       FontFamily="IconFont"
+                       FontSize="30"
+                       TextColor="White"
+                       VerticalOptions="Center"
+                       HorizontalOptions="StartAndExpand" />
+
+            </StackLayout>
+
+            <!-- BODY -->
+            <Grid Grid.Row="1"
+                  IsClippedToBounds="True"
+                  BindingContext="{Binding ProductVM}">
+                <ScrollView Grid.Row="0"
+                            x:Name="scrollBody"
+                            VerticalOptions="FillAndExpand"
+                            BackgroundColor="Transparent"
+                            IsClippedToBounds="True"
+                            Scrolled="ScrollBody_Scrolled">
+                    <Grid BackgroundColor="White"
+                          Margin="0,0,0,0">
+
+                        <!-- FIRST ROW | HEADER CAROUSEL -->
+                        <CarouselView x:Name="Carousel"
+                                      IsVisible="true"
+                                      VerticalOptions="Start"
+                                      HeightRequest="{Binding Source={Reference this}, Path=Layoutwidth}"
+                                      IsSwipeEnabled="True"
+                                      IsBounceEnabled="True"
+                                      Loop="False"
+                                      BackgroundColor="White"
+                                      PositionChanged="Carousel_body_PositionChanged"
+                                      IsScrollAnimated="True"
+                                      PeekAreaInsets="0"
+                                      ItemsSource="{Binding Images}">
+                            <!--<CarouselView.Behaviors>
+                                    <behaviors:CarouselViewBehavior />
+                            </CarouselView.Behaviors>-->
+                            <CarouselView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal"
+                                                   SnapPointsAlignment="Center"
+                                                   SnapPointsType="MandatorySingle" />
+                            </CarouselView.ItemsLayout>
+                            <CarouselView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid VerticalOptions="Fill">
+
+                                        <StackLayout VerticalOptions="FillAndExpand">
+                                            <Image Source="{Binding  . }"
+                                                   HeightRequest="{Binding Source={Reference this}, Path=Layoutwidth}"
+                                                   HorizontalOptions="Fill"
+                                                   VerticalOptions="Center"
+                                                   Aspect="AspectFill">
+                                            </Image>
+                                            <StackLayout.GestureRecognizers>
+                                                <!--<TapGestureRecognizer Tapped="TapOnImageToZoomInCarousel"
+                                                                  NumberOfTapsRequired="2" />-->
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
+                                                                      NumberOfTapsRequired="1" />
+                                                <!--<PinchGestureRecognizer PinchUpdated="OnPinchUpdated" />
+                                            <PanGestureRecognizer PanUpdated="OnPanUpdated"
+                                                                  TouchPoints="1" />-->
+                                            </StackLayout.GestureRecognizers>
+                                        </StackLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </CarouselView.ItemTemplate>
+                        </CarouselView>
+                        
+                        <!-- SECOND ROW -->
+                        <StackLayout x:Name="bodySecondRow"
+                                     InputTransparent="True"
+                                     Spacing="0"
+                                     Margin="0,0,0,0">
+                            <!-- BOX ABOVE GALLERY -->
+                            <BoxView Color="Transparent"
+                                     InputTransparent="True"
+                                     HeightRequest="{Binding Source={Reference this}, Path=Layoutwidth}" />
+                            <!-- ALL ANTHER ELEMENTS IN BODY -->
+                            <StackLayout x:Name="bodyContentSecondRow"
+                                         BackgroundColor="Green"
+                                         Spacing="10">
+                                <!-- OVERFIEW  TITEL AND PRICE [0]-->
+                                <StackLayout x:Name="stackTitleAndPrice"
+                                             Padding="10">
+                                    <Label Text="{Binding Price, StringFormat='US $ {0}.45'}"
+                                           FontSize="25"
+                                           TextColor="Black"
+                                           FontAttributes="Bold" />
+                                    <Label Text="{Binding Title}"
+                                           FontSize="18"
+                                           TextColor="Black" />
+                                    <!-- STARS-->
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Style="{StaticResource stars}" />
+                                        <Label Style="{StaticResource stars}" />
+                                        <Label Style="{StaticResource stars}" />
+                                        <Label Style="{StaticResource stars}" />
+                                        <Label Style="{StaticResource stars}" />
+                                        <Label Text="4.9 | 9710 orders" />
+                                    </StackLayout>
+
+                                </StackLayout>
+
+                                <BoxView Style="{StaticResource separateLine}" />
+
+                                <!-- COLORS [2] -->
+                                <StackLayout Padding="10,15"
+                                             BackgroundColor="WhiteSmoke">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="5 Color"
+                                               FontSize="18"
+                                               TextColor="Black" />
+                                        <Label Text="{x:Static icon:IconFont.ChevronRight }"
+                                               FontFamily="IconFont"
+                                               FontSize="22"
+                                               HorizontalOptions="EndAndExpand" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <BoxView Color="Crimson"
+                                                 Style="{StaticResource boxColorProduct}" />
+                                        <BoxView Color="Green"
+                                                 Style="{StaticResource boxColorProduct}" />
+                                        <BoxView Color="CadetBlue"
+                                                 Style="{StaticResource boxColorProduct}" />
+                                        <BoxView Color="Black"
+                                                 Style="{StaticResource boxColorProduct}" />
+                                        <BoxView Color="Gold"
+                                                 Style="{StaticResource boxColorProduct}" />
+                                        <Label Text="..."
+                                               VerticalOptions="Center" />
+                                    </StackLayout>
+                                </StackLayout>
+
+                                <BoxView Style="{StaticResource separateLine}" />
+
+                                <!-- SPECIFICATIONS [4] -->
+                                <StackLayout Padding="10">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Specifications"
+                                               FontAttributes="Bold"
+                                               FontSize="18"
+                                               TextColor="Black" />
+                                        <Label Text="{x:Static icon:IconFont.ChevronRight }"
+                                               FontFamily="IconFont"
+                                               FontSize="22"
+                                               HorizontalOptions="EndAndExpand" />
+                                    </StackLayout>
+                                    <Label Text="{Binding Description}"
+                                           FontSize="18" />
+                                </StackLayout>
+
+                                <BoxView Style="{StaticResource separateLine}" />
+
+                                <!-- REVIEWS [6] -->
+                                <StackLayout Padding="0">
+                                    <StackLayout Padding="15">
+                                        <!-- star 2-->
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Reviews"
+                                                   FontAttributes="Bold"
+                                                   FontSize="18"
+                                                   TextColor="Black" />
+                                            <Label Text="{x:Static icon:IconFont.ChevronRight }"
+                                                   FontFamily="IconFont"
+                                                   FontSize="22"
+                                                   HorizontalOptions="EndAndExpand" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Name User" />
+                                            <Label Text="24 Oct 2021"
+                                                   HorizontalOptions="EndAndExpand" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Style="{StaticResource stars}" />
+                                            <Label Style="{StaticResource stars}" />
+                                            <Label Style="{StaticResource stars}" />
+                                            <Label Style="{StaticResource stars}" />
+                                            <Label Style="{StaticResource stars}" />
+                                        </StackLayout>
+                                        <Label Text="{Binding Title}"
+                                               FontSize="16"
+                                               TextColor="Black" />
+                                    </StackLayout>
+                                    <StackLayout Padding="15">
+                                        <!-- star 2-->
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Name User" />
+                                            <Label Text="24 Oct 2021"
+                                                   HorizontalOptions="EndAndExpand" />
+
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Style="{StaticResource stars}" />
+                                            <Label Style="{StaticResource stars}" />
+                                            <Label Style="{StaticResource stars}" />
+                                            <Label Style="{StaticResource stars}" />
+                                            <Label Style="{StaticResource stars}" />
+                                        </StackLayout>
+                                        <Label Text="{Binding Title}"
+                                               FontSize="16"
+                                               TextColor="Black" />
+                                    </StackLayout>
+                                </StackLayout>
+                                
+                                <BoxView Style="{StaticResource separateLine}" />
+
+                                <!-- DESCRIPTION [8] -->
+                                <StackLayout Padding="10"
+                                             BackgroundColor="WhiteSmoke">
+                                    <Label Text="Description"
+                                           FontAttributes="Bold"
+                                           FontSize="18"
+                                           TextColor="Black" />
+                                    <Label Text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                                           HorizontalOptions="Center" />
+                                    <Image Source="{Binding Images[0]}"
+                                           Aspect="AspectFill"
+                                           HeightRequest="320"
+                                           WidthRequest="300" />
+                                    <Label Text="{Binding Description}" />
+                                    <Image Source="{Binding Images[1]}" />
+                                    <Label Text="{Binding Description}" />
+                                    <Image Source="{Binding Images[2]}" />
+                                </StackLayout>
+                                
+                                <BoxView Style="{StaticResource separateLine}" />
+
+                                <!-- RECOMMENDATION [10]-->
+                                <StackLayout Padding="10"
+                                             HeightRequest="400"
+                                             BackgroundColor="DarkKhaki">
+                                    <Label Text="Recommendation"
+                                           FontAttributes="Bold"
+                                           FontSize="18"
+                                           TextColor="Black" />
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                </ScrollView>
+            </Grid>
+
+            <!-- FOOTER -->
+            <StackLayout x:Name="footer"
+                         Grid.Row="2"
+                         Padding="10"
+                         HeightRequest="60"
+                         Orientation="Horizontal"
+                         BackgroundColor="White">
+                <StackLayout Padding="15,0"
+                             Spacing="2">
+                    <Label Text="{x:Static icon:IconFont.Storefront }"
+                           FontFamily="IconFont"
+                           FontSize="25"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"
+                           HorizontalOptions="Center"/>
+                    <Label Text="Store"
+                           TextTransform="Uppercase"
+                           HorizontalTextAlignment="Center"
+                           FontSize="11"
+                           TextColor="Black"
+                           HorizontalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Padding="15,0"
+                             Spacing="2">
+                    <Label Text="{x:Static icon:IconFont.ChatProcessingOutline  }"
+                           FontFamily="IconFont"
+                           FontSize="25"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"
+                           HorizontalOptions="Center" />
+                    <Label Text="Chat"
+                           TextTransform="Uppercase"
+                           HorizontalTextAlignment="Center"
+                           FontSize="11"
+                           TextColor="Black"
+                           HorizontalOptions="Center" />
+                </StackLayout>
+                <!-- box -->
+                <StackLayout Orientation="Horizontal"
+                             Spacing="0"
+                             HorizontalOptions="FillAndExpand">
+                    <border:PancakeView CornerRadius="30,0,30,0"
+                                        HorizontalOptions="FillAndExpand"
+                                        BackgroundColor="Goldenrod">
+                        <Label Text="أضف إلى السلة"
+                               FontSize="16"
+                               TextColor="White"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
+                    </border:PancakeView>
+                    <border:PancakeView CornerRadius="0,30,0,30"
+                                        HorizontalOptions="FillAndExpand"
+                                        BackgroundColor="Crimson">
+                        <Label Text="الشراء الآن"
+                               FontSize="16"
+                               TextColor="White"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </border:PancakeView>
+                </StackLayout>
+                
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <!-- ↓↓↓ FLOATS ↓↓↓25 •••7 8 ◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘ -->
+            <!-- TAB SECTION -->
+            <ScrollView Grid.Row="1"
+                        x:Name="TabSection"
+                        IsVisible="false"
+                        HeightRequest="40"
+                        VerticalOptions="Start"
+                        BackgroundColor="White"
+                        Orientation="Horizontal"
+                        HorizontalScrollBarVisibility="Never"
+                        Padding="0,0,0,3">
+                <border:PancakeView Padding="0"
+                                    Margin="-3,-3,-3,0">
+                    <border:PancakeView.Shadow>
+                        <border:DropShadow BlurRadius="2" />
+                    </border:PancakeView.Shadow>
+                    <StackLayout x:Name="containerTabSection"
+                                 Orientation="Horizontal"
+                                 Spacing="0"
+                                 VerticalOptions="Center"
+                                 Padding="10,0">
+                        <Label Text="Overfiew"
+                               Style="{StaticResource LableTabSectionStyle}" />
+                        <Label Text="Colors"
+                               Style="{StaticResource LableTabSectionStyle}" />
+                        <Label Text="Reviews"
+                               Style="{StaticResource LableTabSectionStyle}" />
+                        <Label Text="Description"
+                               Style="{StaticResource LableTabSectionStyle}" />
+                        <Label Text="Recommendation"
+                               Style="{StaticResource LableTabSectionStyle}" />
+                    </StackLayout>
+                </border:PancakeView>
+
+            </ScrollView>
+            <!-- not working -->
+            <CollectionView Grid.Row="1"
+                            IsVisible="false"
+                            x:Name="TabSection1"
+                            Scrolled="TabSection_Scrolled"> 
+                <CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Overfiew</x:String>
+                        <x:String>Reviews</x:String>
+                        <x:String>Descriptiton</x:String>
+                        <x:String>recommendation</x:String>
+                    </x:Array>
+                </CollectionView.ItemsSource>
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Spacing="0"
+                                     VerticalOptions="Center"
+                                     Padding="10,0">
+                            <Label Text="{Binding .}"
+                                   Style="{StaticResource LableTabSectionStyle}" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <!-- GALLERY -->
+            <Grid x:Name="gridGallery"
+                  Grid.RowSpan="3"
+                  RowSpacing="0">
+                
+                <!-- -->
+                <CarouselView x:Name="Carousel2"
+                              BackgroundColor="Black"
+                              VerticalOptions="FillAndExpand"
+                              HeightRequest="{Binding Source={Reference this}, Path=Layoutwidth}"
+                              Loop="False"
+                              PositionChanged="Carousel_PositionChanged"
+                              Position="{Binding Source={x:Reference Carousel}, Path=Position}"
+                              ItemsSource="{Binding  ProductVM.Images}">
+                    <CarouselView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal"
+                                           SnapPointsAlignment="Center"
+                                           SnapPointsType="MandatorySingle" />
+                    </CarouselView.ItemsLayout>
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid VerticalOptions="Fill"
+                                  IsClippedToBounds="False">
+                                <StackLayout VerticalOptions="FillAndExpand"
+                                             IsClippedToBounds="False">
+                                    <Image Source="{Binding  . }"
+                                           VerticalOptions="FillAndExpand"
+                                           HorizontalOptions="FillAndExpand"
+                                           Aspect="AspectFit"
+                                           InputTransparent="True">
+                                    </Image>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapOnImageToZoomInCarousel"
+                                                              NumberOfTapsRequired="2" />
+                                        <PinchGestureRecognizer PinchUpdated="OnPinchUpdated" />
+                                        <PanGestureRecognizer PanUpdated="OnPanUpdated"
+                                                              TouchPoints="1" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                
+                <!-- -->
+                <StackLayout x:Name="closeGallery"
+                             Opacity="0.5"
+                             BackgroundColor="Black"
+                             HeightRequest="60"
+                             VerticalOptions="Start">
+                    <BoxView Color="Red"
+                             HorizontalOptions="Start"
+                             VerticalOptions="Start"
+                             WidthRequest="50"
+                             HeightRequest="50">
+                        <BoxView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapBoxcloseGallery" />
+                        </BoxView.GestureRecognizers>
+                    </BoxView>
+                </StackLayout>
+            </Grid>
+            
+            <!-- IMAGE FLOAT-->
+            <StackLayout x:Name="stackFloatImage"
+                         Grid.Row="0"
+                         Grid.RowSpan="3"
+                         IsVisible="false"
+                         BackgroundColor="Black"
+                         VerticalOptions="Start"
+                         TranslationY="0"
+                         Opacity="1"
+                         AnchorY="0"
+                         IsClippedToBounds="True">
+                <Image x:Name="imageFloat"
+                       VerticalOptions="Start"
+                       HeightRequest="{Binding Source={Reference this}, Path=Layoutwidth}"
+                       Aspect="AspectFill"
+                       TranslationY="60" />
+            </StackLayout>
+            
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,24 +1,314 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProductPictures.MainPage">
+             xmlns:border="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:footer="clr-namespace:ProductPictures.Layouts"
+             xmlns:vm="clr-namespace:ProductPictures.ViewModels"
+             x:Class="ProductPictures.MainPage"
+             xmlns:icon="clr-namespace:AwesomeFonts"
+             xmlns:converters="clr-namespace:ProductPictures.Converters"
+             BackgroundColor="WhiteSmoke"
+             NavigationPage.HasNavigationBar="False"
+             x:Name="this">
+    <ContentPage.BindingContext>
+        <vm:MainPageVM />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BoolToStringConverter x:Key="FeaturedHeightConverter"
+                                              FalseString="300"
+                                              TrueString="280" />
+            <x:Array Type="{Type x:String}"
+                     x:Key="array">
+                <x:String>stack Binding 0</x:String>
+                <x:String>stack Binding 1</x:String>
+                <x:String>stack Binding 2</x:String>
+                <x:String>stack Binding 3</x:String>
+            </x:Array>
+            <x:Array Type="{Type x:String}"
+                     x:Key="array2">
+                <x:String>Ahmad 1</x:String>
+                <x:String>Ahmad 2</x:String>
+                <x:String>Ahmad 3</x:String>
+                <x:String>Ahmad 4</x:String>
+                <x:String>Ahmad 5</x:String>
+                <x:String>Ahmad 6</x:String>
+                <x:String>Ahmad 6</x:String>
+                <x:String>Ahmad 6</x:String>
+                <x:String>Ahmad 6</x:String>
+                <x:String>Ahmad 6</x:String>
+                <x:String>Ahmad 6</x:String>
+                <x:String>Ahmad 7</x:String>
+            </x:Array>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <AbsoluteLayout>
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All"
+                     Spacing="0">
+            <!-- Header -->
+            <StackLayout x:Name="header"
+                         BackgroundColor="Aqua"
+                         HeightRequest="50">
+                <Label Text="HEADER"
+                       FontSize="Large"
+                       VerticalOptions="FillAndExpand"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center" />
+            </StackLayout>
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
+            <!-- body ............................................................................................................................................................................................................................................................................................................................................................................................................-->
+            <RefreshView Refreshing="RefreshView_Refreshing"
+                         x:Name="body"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         BackgroundColor="Brown"
+                         Command="{Binding RefreshViewCommand}"
+                         CommandParameter="{Binding Source={x:Reference body}}">
+                <Grid>
+                    <ScrollView x:Name="scrollView"
+                                Scrolled="ScrollView_Scrolled"
+                                VerticalScrollBarVisibility="Never"
+                                Orientation="Vertical"
+                                >
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                     
+                                     Spacing="0">
+                            <!-- first collection -->
+                            <ScrollView Orientation="Horizontal"
+                                        InputTransparent="True"
+                                        HorizontalScrollBarVisibility="Never"
+                                        HeightRequest="108">
+                                <StackLayout Orientation="Horizontal"
+                                             Spacing="0"
+                                             BindableLayout.ItemsSource="{Binding HotKeyItemsSource}">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackLayout Padding="3,10"
+                                                         VerticalOptions="Start">
+                                                <StackLayout WidthRequest="70"
+                                                             Spacing="0">
+                                                    <border:PancakeView CornerRadius="30"
+                                                                        HeightRequest="50"
+                                                                        WidthRequest="50"
+                                                                        HorizontalOptions="Center"
+                                                                        VerticalOptions="Center"
+                                                                        IsClippedToBounds="True"
+                                                                        BackgroundColor="{Binding BackgroundColor}">
+                                                        <StackLayout>
+                                                            <Label Text="{Binding Image}"
+                                                                   FontFamily="IconFont"
+                                                                   FontSize="35"
+                                                                   TextColor="White"
+                                                                   HorizontalOptions="CenterAndExpand"
+                                                                   VerticalOptions="CenterAndExpand" />
+                                                        </StackLayout>
+                                                    </border:PancakeView>
+                                                    <Label Text="{Binding Name}"
+                                                           LineBreakMode="TailTruncation"
+                                                           HorizontalTextAlignment="Center"
+                                                           MaxLines="2"
+                                                           FontSize="14"
+                                                           TextColor="Black"
+                                                           VerticalOptions="Start"
+                                                           HorizontalOptions="CenterAndExpand" />
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
+                            </ScrollView>
+                            <!-- ad-->
+                            <border:PancakeView BackgroundColor="White"
+                                                CornerRadius="10"
+                                                Margin="15,10"
+                                                Padding="10">
+                                <StackLayout Orientation="Horizontal"
+                                             HorizontalOptions="Center">
+                                    <StackLayout HeightRequest="65"
+                                                WidthRequest="100"
+                                                Padding="5,10"
+                                                BackgroundColor="WhiteSmoke">
+                                        <Label Text="7/24 customer service"
+                                               MaxLines="2"
+                                               TextColor="Black"
+                                               HorizontalTextAlignment="Start"
+                                               FontSize="13"/>
+
+                                        <Label Text="{x:Static icon:IconFont.Headphones }"
+                                               FontFamily="IconFont"
+                                               Margin="0,-10,0,0"
+                                               FontSize="35"
+                                               TextColor="LightBlue"
+                                               HorizontalOptions="End" />
+                                    </StackLayout>
+                                    <StackLayout HeightRequest="65"
+                                                 WidthRequest="100"
+                                                 Padding="5,10"
+                                                 BackgroundColor="WhiteSmoke">
+                                        <Label Text="Money Back Guarantee"
+                                               MaxLines="2"
+                                               TextColor="Black"
+                                               HorizontalTextAlignment="Start"
+                                               FontSize="13" />
+
+                                        <Label Text="{x:Static icon:IconFont.Cash }"
+                                               FontFamily="IconFont"
+                                               Margin="0,-10,0,0"
+                                               FontSize="35"
+                                               TextColor="LightBlue"
+                                               HorizontalOptions="End" />
+                                    </StackLayout>
+                                    <StackLayout HeightRequest="65"
+                                                 WidthRequest="100"
+                                                 Padding="5,10"
+                                                 BackgroundColor="WhiteSmoke">
+                                        <Label Text="Safe and reliable payment method"
+                                               MaxLines="2"
+                                               TextColor="Black"
+                                               HorizontalTextAlignment="Start"
+                                               FontSize="13" />
+
+                                        <Label Text="{x:Static icon:IconFont.Vpn  }"
+                                               FontFamily="IconFont"
+                                               Margin="0,-10,0,0"
+                                               FontSize="35"
+                                               TextColor="LightBlue"
+                                               HorizontalOptions="End" />
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </border:PancakeView>
+                            <!-- tap will freeze -->
+                            <StackLayout x:Name="stackTap1"
+                                         VerticalOptions="Start"
+                                         BackgroundColor="WhiteSmoke"
+                                         Orientation="Horizontal"
+                                         Padding="20,8"
+                                         Spacing="10">
+
+                                <border:PancakeView CornerRadius="20"
+                                                    Padding="10"
+                                                    BackgroundColor="White"
+                                                    HorizontalOptions="Start">
+                                    <Label Text="Accessories"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="Crimson" />
+                                </border:PancakeView>
+
+                                <border:PancakeView CornerRadius="20"
+                                                    Padding="10"
+                                                    HorizontalOptions="Start">
+                                    <Label Text="11.11 SALE"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="Crimson" />
+                                </border:PancakeView>
+                            </StackLayout>
+                            <!-- second coloection 1160 -->
+
+                            <FlexLayout x:Name="flexLayoutItems"
+                                        BindableLayout.ItemsSource="{Binding ProductsItemsSource}"
+                                        IsClippedToBounds="True"
+                                        Direction="Column"
+                                        HeightRequest="{Binding FlexLayoutItemsHeightRequest}"
+                                        HorizontalOptions="Center"
+                                        Wrap="Wrap"
+                                        Padding="0"
+                                        JustifyContent="Start">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout WidthRequest="{Binding XamarinWidth}"
+                                                     IsClippedToBounds="True"
+                                                     HeightRequest="{Binding IsFeatured, Converter={StaticResource FeaturedHeightConverter}}">
+                                            <border:PancakeView CornerRadius="7"
+                                                                Margin="4"
+                                                                IsClippedToBounds="True"
+                                                                BackgroundColor="White"
+                                                                VerticalOptions="FillAndExpand"
+                                                                >
+                                                <StackLayout IsClippedToBounds="True">
+                                                    <Image Source="{Binding Image}"
+                                                           HeightRequest="140"
+                                                           Aspect="AspectFill"
+                                                           VerticalOptions="Start"/>
+                                                    <StackLayout Padding="5,0">
+                                                        <Label Text="{Binding Title}"
+                                                               FontSize="16"
+                                                               LineBreakMode="TailTruncation"
+                                                               MaxLines="2" />
+                                                        <Label Text="{Binding Price,StringFormat='EGP {0}.99'}"
+                                                               FontSize="20"
+                                                               FontAttributes="Bold"
+                                                               TextColor="Black" />
+                                                        <Label Text="{Binding Price,StringFormat='Sale price: EGP {0:0.0}'}"
+                                                               FontSize="14"
+                                                               TextColor="Crimson" />
+                                                        <Label Text="{Binding CountPiecesSold,StringFormat='{0} have been sold'}"
+                                                               FontSize="14"
+                                                               FontAttributes="Bold"
+                                                               TextColor="LightGray" />
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </border:PancakeView>
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.ProductsItemsSourceCommand, Source={x:Reference Name=flexLayoutItems}}"
+                                                                      CommandParameter="{Binding .}" />
+                                            </StackLayout.GestureRecognizers>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                            <Label Text="mohaemd"
+                                   VerticalOptions="EndAndExpand" />
+                        </StackLayout>
+                    </ScrollView>
+                    <!-- abslot for tapFreeze -->
+                    <StackLayout x:Name="stackTap2"
+                                 IsVisible="false"
+                                 VerticalOptions="Start"
+                                 BackgroundColor="WhiteSmoke"
+                                 Orientation="Horizontal"
+                                 Padding="20,8"
+                                 Spacing="10">
+
+                        <border:PancakeView CornerRadius="20"
+                                            Padding="10"
+                                            BackgroundColor="White"
+                                            HorizontalOptions="Start">
+                            <Label Text="Accessories"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="Crimson" />
+                        </border:PancakeView>
+
+                        <border:PancakeView CornerRadius="20"
+                                            Padding="10"
+                                            HorizontalOptions="Start">
+                            <Label Text="11.11 SALE"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="Crimson" />
+                        </border:PancakeView>
+                    </StackLayout>
+                </Grid>
+            </RefreshView>
+            <!-- Footer -->
+            <footer:TabBar x:Name="tabBar"
+                           TabBarClicked="TabBar_TabBarClicked"/>
+        </StackLayout>
+        <!-- float -->
+        <!--<Label Text="mohed"
+               AbsoluteLayout.LayoutBounds="0.5,0.5"
+               AbsoluteLayout.LayoutFlags="PositionProportional" />-->
+    </AbsoluteLayout>
+
+    <!--<Grid>
+        
+        <CollectionView x:Name="cVProducts">
+            
+        </CollectionView>
+    </Grid>-->
 
 </ContentPage>
