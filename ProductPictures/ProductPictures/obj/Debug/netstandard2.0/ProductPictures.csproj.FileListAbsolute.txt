@@ -15,3 +15,4 @@ F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures
 F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\obj\Debug\netstandard2.0\Layouts\TabBar.xaml.g.cs
 F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\obj\Debug\netstandard2.0\Views\UserPage.xaml.g.cs
 F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\obj\Debug\netstandard2.0\Views\ProductDetailsPage.xaml.g.cs
+F:\_Projects\SmallProjectXamarin\ProductPictures\ProductPictures\ProductPictures\obj\Debug\netstandard2.0\Views\TestPage.xaml.g.cs

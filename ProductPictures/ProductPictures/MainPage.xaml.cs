@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProductPictures.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -77,6 +78,11 @@ namespace ProductPictures
             xamarinHeight = Height / density;
 
 
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new TestPage()) ;
         }
     }
 }

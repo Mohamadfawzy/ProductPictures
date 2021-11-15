@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductPictures.Views.TestPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout HeightRequest="50"
+                         WidthRequest="50"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Start">
+                <StackLayout.Background>
+                    <LinearGradientBrush StartPoint="0,1"
+                                         EndPoint="1,0.5">
+                        <GradientStop Color="Yellow"
+                                      Offset="0.5" />
+                        <GradientStop Color="Crimson"
+                                      Offset="1" />
+                    </LinearGradientBrush>
+                </StackLayout.Background>
+            </StackLayout>
+            <Polygon Points="0,0 0,100 100,100 100,50 "
+                     Margin="0"
+                     Aspect="Fill"
+                     IsVisible="true"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="Fill"
+                     Fill="Crimson"
+                     StrokeThickness="0" />
+            <Polygon Points="50,0 0,50 50,100, 100,50"
+                     Margin="0"
+                     Aspect="Uniform"
+                     HeightRequest="200"
+                     WidthRequest="200"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Start"
+                     Fill="Crimson"
+                     StrokeThickness="0" />
+            
+            <Polygon Margin="0"
+                      Aspect="Fill"
+                      IsVisible="true"
+                      HorizontalOptions="Fill"
+                      VerticalOptions="Fill"
+                      Fill="Crimson"
+                      StrokeThickness="0"
+                      Points="50,0 0,50 50,100, 100,50"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

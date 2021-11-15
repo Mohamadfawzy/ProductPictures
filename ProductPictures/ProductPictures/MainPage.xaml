@@ -176,7 +176,9 @@
                                                TextColor="LightBlue"
                                                HorizontalOptions="End" />
                                     </StackLayout>
-
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </border:PancakeView>
                             <!-- tap will freeze -->
